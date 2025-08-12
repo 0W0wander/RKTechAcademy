@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Completion Checkbox -->
+        <CheckBox
+            android:id="@+id/completionCheckbox"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:buttonTint="@color/design_default_color_primary"
+            android:clickable="false"
+            android:focusable="false" />
+
+        <!-- Lesson Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Lesson Title -->
+            <TextView
+                android:id="@+id/lessonTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                tools:text="Introduction to Product Development" />
+
+            <!-- Lesson Description -->
+            <TextView
+                android:id="@+id/lessonDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Understanding the product lifecycle and development phases" />
+
+            <!-- Lesson Meta (Duration, Difficulty) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <!-- Duration -->
+                <TextView
+                    android:id="@+id/lessonDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:drawableStart="@drawable/ic_menu_camera"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    tools:text="8 min" />
+
+                <!-- Difficulty Badge -->
+                <TextView
+                    android:id="@+id/difficultyBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/ic_menu_camera"
+                    android:backgroundTint="@color/design_default_color_secondary"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    tools:text="BEGINNER" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Play/Watch Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/watchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/watch_lesson"
+            android:textSize="12sp"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/ic_menu_camera"
+            app:iconSize="16dp"
+            style="@style/Widget.Material3.Button.UnelevatedButton" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

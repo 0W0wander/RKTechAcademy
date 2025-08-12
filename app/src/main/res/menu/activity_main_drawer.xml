@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_progress"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_my_progress" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_favorites" />
+    </group>
+    
+    <item android:title="Learning Modules">
+        <menu>
+            <item
+                android:id="@+id/nav_new_product_dev"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/module_new_product_dev" />
+            <item
+                android:id="@+id/nav_technical_solutions"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/module_technical_solutions" />
+            <item
+                android:id="@+id/nav_hr_it_solutions"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="@string/module_hr_it_solutions" />
+            <item
+                android:id="@+id/nav_live_talent"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="@string/module_live_talent" />
+            <item
+                android:id="@+id/nav_rkb_labs"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/module_rkb_labs" />
+        </menu>
+    </item>
+</menu>

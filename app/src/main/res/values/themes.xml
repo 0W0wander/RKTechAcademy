@@ -1,0 +1,30 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.RKTechAcademy" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Brand colors: Blue & White -->
+        <item name="colorPrimary">@color/rk_primary_blue</item>
+        <item name="colorPrimaryContainer">@color/rk_very_light_blue</item>
+        <item name="colorOnPrimary">@color/rk_white</item>
+
+        <item name="colorSecondary">@color/rk_light_blue</item>
+        <item name="colorSecondaryContainer">@color/rk_very_light_blue</item>
+        <item name="colorOnSecondary">@color/rk_text_dark</item>
+
+        <item name="android:statusBarColor">@color/rk_primary_blue</item>
+        <item name="android:navigationBarColor">@color/rk_white</item>
+
+        <!-- Surface / background -->
+        <item name="android:colorBackground">@color/rk_white</item>
+        <item name="colorSurface">@color/rk_white</item>
+        <item name="colorOnSurface">@color/rk_text_dark</item>
+    </style>
+
+    <style name="Theme.RKTechAcademy.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.RKTechAcademy.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.RKTechAcademy.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

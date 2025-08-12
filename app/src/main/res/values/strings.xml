@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">RK Tech Academy</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">RK Tech Academy</string>
+    <string name="nav_header_subtitle">Learn. Build. Innovate.</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Main Navigation -->
+    <string name="menu_home">Learning Dashboard</string>
+    <string name="menu_my_progress">My Progress</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    
+    <!-- Learning Modules -->
+    <string name="module_new_product_dev">New Product Development</string>
+    <string name="module_technical_solutions">Technical Solutions</string>
+    <string name="module_hr_it_solutions">HR &amp; IT Solutions</string>
+    <string name="module_live_talent">Live Talent</string>
+    <string name="module_rkb_labs">RKB Labs</string>
+    
+    <!-- General UI -->
+    <string name="welcome_message">Welcome back! Ready to continue learning?</string>
+    <string name="continue_learning">Continue Learning</string>
+    <string name="explore_modules">Explore Learning Modules</string>
+    <string name="lesson_completed">Lesson Completed!</string>
+    <string name="lessons_count">%1$d lessons</string>
+    <string name="progress_percentage">%1$d%% Complete</string>
+    <string name="watch_lesson">Watch Lesson</string>
+    <string name="read_lesson">Read Lesson</string>
+    <string name="mark_completed">Mark as Completed</string>
+    <string name="lesson_duration">%1$d min</string>
+    
+    <!-- Progress Tracking -->
+    <string name="video_completed">Video completed! ✅</string>
+    <string name="text_lesson_completed">Text lesson completed! ✅</string>
+    <string name="great_job">Great job!</string>
+    <string name="next_lesson_unlocked">Next lesson unlocked!</string>
+    <string name="reading_time">%1$d min read</string>
+    <string name="completed_checkmark">✓</string>
+    
+    <!-- Lesson Types -->
+    <string name="video_lesson">Video Lesson</string>
+    <string name="text_lesson">Text Lesson</string>
+    <string name="concept_review">Concept Review</string>
+    <string name="quick_summary">Quick Summary</string>
+</resources>

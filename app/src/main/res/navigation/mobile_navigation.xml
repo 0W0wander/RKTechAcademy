@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <!-- Home -->
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <!-- Drawer: My Progress (placeholder) -->
+    <fragment
+        android:id="@+id/nav_progress"
+        android:name="com.example.rktechacademy.ui.gallery.GalleryFragment"
+        android:label="@string/menu_my_progress"
+        tools:layout="@layout/fragment_gallery" />
+
+    <!-- Drawer: Favorites (placeholder) -->
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="com.example.rktechacademy.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <!-- Drawer: Module entries route to HomeFragment with moduleId args -->
+    <fragment
+        android:id="@+id/nav_new_product_dev"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/module_new_product_dev"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="moduleId"
+            app:argType="string"
+            android:defaultValue="new_product_dev" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_technical_solutions"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/module_technical_solutions"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="moduleId"
+            app:argType="string"
+            android:defaultValue="technical_solutions" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_hr_it_solutions"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/module_hr_it_solutions"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="moduleId"
+            app:argType="string"
+            android:defaultValue="hr_it_solutions" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_live_talent"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/module_live_talent"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="moduleId"
+            app:argType="string"
+            android:defaultValue="live_talent" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_rkb_labs"
+        android:name="com.example.rktechacademy.ui.home.HomeFragment"
+        android:label="@string/module_rkb_labs"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="moduleId"
+            app:argType="string"
+            android:defaultValue="rkb_labs" />
+    </fragment>
+
+    <!-- Lesson destinations -->
+    <fragment
+        android:id="@+id/lessonListFragment"
+        android:name="com.example.rktechacademy.ui.lesson.LessonListFragment"
+        android:label="Lessons"
+        tools:layout="@layout/fragment_lesson_list">
+        <argument
+            android:name="module_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonDetailFragment"
+        android:name="com.example.rktechacademy.ui.lesson.LessonDetailFragment"
+        android:label="Lesson"
+        tools:layout="@layout/fragment_lesson_detail">
+        <argument
+            android:name="lesson_id"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/textLessonFragment"
+        android:name="com.example.rktechacademy.ui.lesson.TextLessonFragment"
+        android:label="Text Lesson"
+        tools:layout="@layout/fragment_text_lesson">
+        <argument
+            android:name="lesson_id"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Legacy placeholders -->
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.rktechacademy.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.rktechacademy.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+</navigation>

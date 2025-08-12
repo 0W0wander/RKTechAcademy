@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- RK Blueprints Theme - Blue & White -->
+    <color name="rk_primary_blue">#1E3A8A</color>      <!-- Deep blue primary -->
+    <color name="rk_light_blue">#3B82F6</color>        <!-- Bright blue accent -->
+    <color name="rk_very_light_blue">#EBF4FF</color>   <!-- Very light blue backgrounds -->
+    <color name="rk_success_blue">#1D4ED8</color>      <!-- Blue for success states -->
+    <color name="rk_white">#FFFFFF</color>             <!-- Pure white -->
+    <color name="rk_light_gray">#F8FAFC</color>        <!-- Very light gray -->
+    <color name="rk_text_dark">#1F2937</color>         <!-- Dark text -->
+    <color name="rk_text_medium">#6B7280</color>       <!-- Medium gray text -->
+    <color name="rk_border_light">#E5E7EB</color>      <!-- Light borders -->
+    
+    <!-- Backwards compatibility -->
+    <color name="success_green">#1D4ED8</color>        <!-- Now blue -->
+    <color name="success_green_light">#EBF4FF</color>  <!-- Now light blue -->
+    <color name="primary_blue">#1E3A8A</color>
+    <color name="accent_orange">#3B82F6</color>        <!-- Now blue -->
+    <color name="text_gray">#6B7280</color>
+    <color name="light_gray">#F8FAFC</color>
+</resources>
