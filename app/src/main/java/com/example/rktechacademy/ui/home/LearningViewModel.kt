@@ -27,6 +27,9 @@ class LearningViewModel(application: Application) : AndroidViewModel(application
 
     private val _moduleProgress = MutableLiveData<Map<String, ModuleProgress>>()
     val moduleProgress: LiveData<Map<String, ModuleProgress>> = _moduleProgress
+    
+    private val _streakDays = MutableLiveData<Int>(0)
+    val streakDays: LiveData<Int> = _streakDays
 
     init {
         initializeData()
@@ -36,27 +39,41 @@ class LearningViewModel(application: Application) : AndroidViewModel(application
     private fun initializeData() {
         viewModelScope.launch {
             try {
-                // Check if data already exists (use suspend count)
-                val count = database.learningModuleDao().getModuleCount()
-                if (count == 0) {
-                    // Initialize with sample data
-                    val initialModules = InitialDataProvider.getInitialModules()
-                    val initialLessons = InitialDataProvider.getInitialLessons()
-                    
-                    repository.insertAllModules(initialModules)
-                    repository.insertAllLessons(initialLessons)
-                    
-                    // Update lesson counts in modules
-                    initialModules.forEach { module ->
-                        val lessonCount = initialLessons.count { it.moduleId == module.id }
-                        repository.insertModule(module.copy(totalLessons = lessonCount))
-                    }
-                }
+                // Always refresh data to ensure new lessons are loaded
+                refreshAllData()
                 _isDataInitialized.value = true
             } catch (e: Exception) {
                 e.printStackTrace()
                 _isDataInitialized.value = false
             }
+        }
+    }
+    
+    private suspend fun refreshAllData() {
+        // Clear existing data completely
+        database.userProgressDao().deleteAllProgress()
+        database.lessonDao().deleteAllLessons()
+        database.learningModuleDao().deleteAllModules()
+        
+        // Insert fresh data
+        val initialModules = InitialDataProvider.getInitialModules()
+        val initialLessons = InitialDataProvider.getInitialLessons()
+        
+        android.util.Log.d("LearningViewModel", "Inserting ${initialModules.size} modules and ${initialLessons.size} lessons")
+        
+        repository.insertAllModules(initialModules)
+        repository.insertAllLessons(initialLessons)
+        
+        // Debug: Print lesson details
+        initialLessons.forEach { lesson ->
+            android.util.Log.d("LearningViewModel", "Lesson: ${lesson.title} - Module: ${lesson.moduleId}")
+        }
+        
+        // Update lesson counts in modules
+        initialModules.forEach { module ->
+            val lessonCount = initialLessons.count { it.moduleId == module.id }
+            android.util.Log.d("LearningViewModel", "Module ${module.id} has $lessonCount lessons")
+            repository.insertModule(module.copy(totalLessons = lessonCount))
         }
     }
 
@@ -92,6 +109,32 @@ class LearningViewModel(application: Application) : AndroidViewModel(application
             }
             
             _moduleProgress.value = progressMap
+            updateStreak()
+        }
+    }
+    
+    private suspend fun calculateStreakDays(dates: List<java.util.Date>): Int {
+        if (dates.isEmpty()) return 0
+        val millisInDay = 24L * 60L * 60L * 1000L
+        val uniqueDays = dates.map { it.time / millisInDay }.toSortedSet().toList().sortedDescending()
+        var streak = 1
+        for (i in 1 until uniqueDays.size) {
+            if (uniqueDays[i] == uniqueDays[i - 1] - 1) {
+                streak += 1
+            } else if (uniqueDays[i] == uniqueDays[i - 1]) {
+                // same day, ignore
+            } else {
+                break
+            }
+        }
+        return streak
+    }
+    
+    private fun updateStreak() {
+        viewModelScope.launch {
+            val dates = database.userProgressDao().getAllAccessDates()
+            val streak = calculateStreakDays(dates)
+            _streakDays.postValue(streak)
         }
     }
 
@@ -146,6 +189,18 @@ class LearningViewModel(application: Application) : AndroidViewModel(application
                 emit(null)
             } catch (e: Exception) {
                 emit(null)
+            }
+        }
+    }
+    
+    // Debug method to force refresh data
+    fun forceRefreshData() {
+        viewModelScope.launch {
+            try {
+                refreshAllData()
+                android.util.Log.d("LearningViewModel", "Force refresh completed")
+            } catch (e: Exception) {
+                android.util.Log.e("LearningViewModel", "Force refresh failed", e)
             }
         }
     }

@@ -14,7 +14,7 @@ import com.example.rktechacademy.data.model.UserProgress
 
 @Database(
     entities = [LearningModule::class, Lesson::class, UserProgress::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -34,7 +34,9 @@ abstract class RKTechAcademyDatabase : RoomDatabase() {
                     context.applicationContext,
                     RKTechAcademyDatabase::class.java,
                     "rk_tech_academy_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration() // This will recreate the database with new lessons
+                .build()
                 INSTANCE = instance
                 instance
             }

@@ -42,8 +42,12 @@ class HomeFragment : Fragment() {
 
         // If navigated from drawer to a specific module, open its lesson list
         val moduleIdArg = arguments?.getString("moduleId") ?: arguments?.getString("module_id")
+        android.util.Log.d("HomeFragment", "Module ID from arguments: $moduleIdArg")
+        android.util.Log.d("HomeFragment", "All arguments: ${arguments?.keySet()?.joinToString()}")
+        
         if (!moduleIdArg.isNullOrEmpty()) {
             val args = Bundle().apply { putString("module_id", moduleIdArg) }
+            android.util.Log.d("HomeFragment", "Navigating to lesson list with module_id: $moduleIdArg")
             requireActivity().findNavController(R.id.nav_host_fragment_content_main)
                 .navigate(R.id.lessonListFragment, args)
             // Clear the argument to avoid re-navigation on config changes
@@ -74,6 +78,12 @@ class HomeFragment : Fragment() {
         // Observe module progress
         learningViewModel.moduleProgress.observe(viewLifecycleOwner) { progressMap ->
             moduleAdapter.updateProgress(progressMap)
+        }
+        
+        // Observe streak
+        learningViewModel.streakDays.observe(viewLifecycleOwner) { days ->
+            val text = if (days <= 1) "${days} day" else "${days} days"
+            binding.streakCounter?.text = text
         }
 
         // Observe total progress for summary card
@@ -113,6 +123,13 @@ class HomeFragment : Fragment() {
         binding.lastLessonCard?.setOnClickListener {
             // Handle last lesson card click
             showTemporaryMessage("Continue learning feature coming soon!")
+        }
+        
+        // Debug: Add long press to force refresh data
+        binding.welcomeTitle.setOnLongClickListener {
+            learningViewModel.forceRefreshData()
+            showTemporaryMessage("Force refreshing data...")
+            true
         }
     }
 

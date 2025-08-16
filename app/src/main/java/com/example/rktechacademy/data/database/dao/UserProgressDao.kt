@@ -31,6 +31,9 @@ interface UserProgressDao {
     """)
     suspend fun getCompletedLessonsCountByModule(moduleId: String): Int
     
+    @Query("SELECT lastAccessedAt FROM user_progress WHERE lastAccessedAt IS NOT NULL ORDER BY lastAccessedAt DESC")
+    suspend fun getAllAccessDates(): List<java.util.Date>
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProgress(progress: UserProgress): Long
     

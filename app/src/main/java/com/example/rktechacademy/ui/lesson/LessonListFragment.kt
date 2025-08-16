@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rktechacademy.R
 import com.example.rktechacademy.data.model.Lesson
+import com.example.rktechacademy.data.InitialDataProvider
 import com.example.rktechacademy.data.model.LessonType
 import com.example.rktechacademy.databinding.FragmentLessonListBinding
 import com.example.rktechacademy.ui.home.LearningViewModel
@@ -38,6 +39,10 @@ class LessonListFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[LearningViewModel::class.java]
         moduleId = arguments?.getString("module_id") ?: arguments?.getString("moduleId")
 
+        // Debug: Print the moduleId to check if it's being passed correctly
+        android.util.Log.d("LessonListFragment", "Module ID: $moduleId")
+        android.util.Log.d("LessonListFragment", "All arguments: ${arguments?.keySet()?.joinToString()}")
+
         setupRecycler()
         observeLessons()
     }
@@ -55,9 +60,23 @@ class LessonListFragment : Fragment() {
     }
 
     private fun observeLessons() {
-        val id = moduleId ?: return
+        val id = moduleId ?: "new_product_dev" // Fallback to new_product_dev for debugging
+        android.util.Log.d("LessonListFragment", "Observing lessons for module: $id")
+        
         viewModel.getLessonsByModule(id).observe(viewLifecycleOwner) { lessons ->
-            adapter.submitList(lessons)
+            val count = lessons?.size ?: 0
+            android.util.Log.d("LessonListFragment", "Received $count lessons")
+            if (count == 0) {
+                // Fallback: populate from InitialDataProvider so UI isn't empty
+                val fallback = InitialDataProvider.getInitialLessons().filter { it.moduleId == id }
+                android.util.Log.d("LessonListFragment", "Using fallback lessons: ${fallback.size}")
+                adapter.submitList(fallback)
+                // Kick a refresh in case DB wasn't seeded
+                ViewModelProvider(requireActivity())[com.example.rktechacademy.ui.home.LearningViewModel::class.java]
+                    .forceRefreshData()
+            } else {
+                adapter.submitList(lessons)
+            }
         }
     }
 

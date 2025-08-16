@@ -77,8 +77,10 @@ object VideoUrlUpdater {
         // New Product Development Module
         "npd_001" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         "npd_002" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "npd_003" to "", // REPLACE_WITH_RAHEEM_VIDEO_URL_3
-        "npd_004" to "", // REPLACE_WITH_RAHEEM_VIDEO_URL_4
+        "npd_003" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+        "npd_004" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+        "npd_005" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+        "npd_006" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
         
         // Technical Solutions Module
         "tech_001" to "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",

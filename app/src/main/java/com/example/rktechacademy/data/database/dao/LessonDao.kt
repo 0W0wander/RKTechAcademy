@@ -33,4 +33,7 @@ interface LessonDao {
     
     @Query("SELECT COUNT(*) FROM lessons WHERE moduleId = :moduleId")
     suspend fun getLessonCountByModule(moduleId: String): Int
+    
+    @Query("DELETE FROM lessons")
+    suspend fun deleteAllLessons(): Int
 }

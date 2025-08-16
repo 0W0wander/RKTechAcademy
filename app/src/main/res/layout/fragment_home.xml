@@ -42,7 +42,7 @@
 
         </LinearLayout>
 
-        <!-- Continue Learning Section -->
+        <!-- Streak & Continue Learning Section -->
         <LinearLayout
             android:id="@+id/continueSection"
             android:layout_width="match_parent"
@@ -50,6 +50,33 @@
             android:orientation="vertical"
             android:layout_marginBottom="24dp"
             android:visibility="gone">
+
+            <!-- Streak Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Learning Streak"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/rk_text_dark" />
+
+                <TextView
+                    android:id="@+id/streakCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/rk_light_blue"
+                    tools:text="7 days" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
