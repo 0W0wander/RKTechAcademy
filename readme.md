@@ -4,11 +4,7 @@
 
 > **Transform your business education with a cutting-edge mobile learning platform featuring RKBlueprints content, progress tracking, and enterprise-ready customization options.**
 
-<p align="center">
-  <img src="https://i.imgur.com/orbjcUF.gif" alt="Demo GIF" />
-</p>
-
-![Demo GIF](https://i.imgur.com/orbjcUF.gif)
+![GIF](https://i.imgur.com/orbjcUF.gif)
 
 
 ---
